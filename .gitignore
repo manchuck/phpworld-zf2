@@ -1,0 +1,9 @@
+local.php
+vendor/*
+build/
+.idea/*
+vagrant/.vagrant/
+iron.ini
+iron.json
+composer.phar
+test/coverage
