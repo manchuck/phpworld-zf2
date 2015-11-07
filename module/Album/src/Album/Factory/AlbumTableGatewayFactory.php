@@ -5,12 +5,11 @@ namespace Album\Factory;
 use Album\Model\Album;
 use Zend\Db\ResultSet\ResultSet;
 use Zend\Db\TableGateway\TableGateway;
-use Zend\ServiceManager\FactoryInterface;
 use Zend\ServiceManager\ServiceLocatorInterface;
 
-class AlbumTableGatewayFactory implements FactoryInterface
+class AlbumTableGatewayFactory
 {
-    public function createService(ServiceLocatorInterface $serviceLocator)
+    public function __invoke(ServiceLocatorInterface $serviceLocator)
     {
         $dbAdapter = $serviceLocator->get('Zend\Db\Adapter\Adapter');
         $resultSetPrototype = new ResultSet();
