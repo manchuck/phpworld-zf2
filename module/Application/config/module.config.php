@@ -60,6 +60,9 @@ return array(
         'factories' => array(
             'translator' => 'Zend\Mvc\Service\TranslatorServiceFactory',
         ),
+        'initializer' => [
+            'Application\LogInitializer'
+        ]
     ),
     'translator' => array(
         'locale' => 'en_US',
