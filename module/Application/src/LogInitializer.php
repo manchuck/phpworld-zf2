@@ -2,8 +2,9 @@
 
 namespace Application;
 
+use Zend\Log\Logger;
 use Zend\Log\LoggerAwareInterface;
-use Zend\Log\LoggerInterface;
+use Zend\Log\Writer\Noop;
 use Zend\ServiceManager\ServiceLocatorAwareInterface;
 use Zend\ServiceManager\ServiceLocatorInterface;
 
@@ -23,16 +24,12 @@ class LogInitializer
             : $service;
 
         // check if the object can take a logger and that we have a logger registered
-        if (!$object instanceof LoggerAwareInterface || !$service->has('Log\App')) {
+        if (!$object instanceof LoggerAwareInterface) {
             return;
         }
 
-        // make sure the logger is in fact a logger
-        $logger = $service->get('Log\App');
-        if (!$logger instanceof LoggerInterface) {
-            return;
-        }
-
+        // Add a noop logger if no logger is configured
+        $logger = $service->has('Log\App') ? $service->get('Log\App') : new Logger(['writers' => new Noop()]);
         $object->setLogger($logger);
     }
 }
