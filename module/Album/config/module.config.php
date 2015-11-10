@@ -27,9 +27,17 @@ return array(
     ),
 
     'service_manager' => array(
+        'invokables' => array(
+            'Album\Factory\AlbumTableDelegatorFactory'
+        ),
         'factories' => array(
             'Album\Model\AlbumTable' => 'Album\Factory\AlbumTableFactory',
             'AlbumTableGateway'      => 'Album\Factory\AlbumTableGatewayFactory',
+        ),
+        'delegators' => array(
+            'Album\Model\AlbumTable' => array(
+                'Album\Factory\AlbumTableDelegatorFactory'
+            ),
         ),
     ),
 

@@ -3,7 +3,7 @@ namespace Album\Model;
 
 use Zend\Db\TableGateway\TableGateway;
 
-class AlbumTable
+class AlbumTable implements AlbumTableInterface
 {
     protected $tableGateway;
 
