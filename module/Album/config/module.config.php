@@ -26,6 +26,12 @@ return array(
         ),
     ),
 
+//    'controller_plugins' => array(
+//        'invokables' => array(
+//            'appHeader' => 'Album\Controller\Plugin\AddAppHeader',
+//        )
+//    ),
+
     'service_manager' => array(
         'invokables' => array(
             'Album\Factory\AlbumTableDelegatorFactory'
