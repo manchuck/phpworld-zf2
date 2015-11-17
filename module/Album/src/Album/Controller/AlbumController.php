@@ -33,24 +33,32 @@ class AlbumController extends AbstractActionController
 
     public function addAction()
     {
+        $prg = $this->prg('/album/add', true);
+
+        if ($prg instanceof \Zend\Http\PhpEnvironment\Response) {
+            // returned a response to redirect us
+            return $prg;
+        }
+
         $form = new AlbumForm();
         $form->get('submit')->setValue('Add');
 
         $request = $this->getRequest();
-        if ($request->isPost()) {
-            $album = new Album();
-            $form->setInputFilter($album->getInputFilter());
-            $form->setData($request->getPost());
-
-            if ($form->isValid()) {
-                $album->exchangeArray($form->getData());
-                $this->getAlbumTable()->saveAlbum($album);
-
-                // Redirect to list of albums
-                return $this->redirect()->toRoute('album');
-            }
+        if ($prg === false) {
+            return ['form' => $form];
         }
-        return array('form' => $form);
+
+        $album = new Album();
+        $form->setInputFilter($album->getInputFilter());
+        $form->setData($prg);
+
+        if ($form->isValid()) {
+            $album->exchangeArray($form->getData());
+            $this->getAlbumTable()->saveAlbum($album);
+
+            // Redirect to list of albums
+            return $this->redirect()->toRoute('album');
+        }
     }
 
     public function editAction()

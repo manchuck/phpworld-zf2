@@ -15,6 +15,7 @@ class AlbumForm extends Form
             'name' => 'id',
             'type' => 'Hidden',
         ));
+
         $this->add(array(
             'name' => 'title',
             'type' => 'Text',
@@ -22,6 +23,7 @@ class AlbumForm extends Form
                 'label' => 'Title',
             ),
         ));
+
         $this->add(array(
             'name' => 'artist',
             'type' => 'Text',
@@ -29,6 +31,12 @@ class AlbumForm extends Form
                 'label' => 'Artist',
             ),
         ));
+
+        $this->add(array(
+            'name' => 'sec',
+            'type' => 'Csrf'
+        ));
+
         $this->add(array(
             'name' => 'submit',
             'type' => 'Submit',
