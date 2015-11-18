@@ -25,7 +25,7 @@ class AlbumController extends AbstractActionController
 
     public function indexAction()
     {
-//        $this->appHeader();
+        $this->appHeader();
         return new ViewModel(array(
             'albums' => $this->getAlbumTable()->fetchAll(),
         ));
@@ -43,9 +43,9 @@ class AlbumController extends AbstractActionController
         $form = new AlbumForm();
         $form->get('submit')->setValue('Add');
 
-        $request = $this->getRequest();
+        $view = new ViewModel(['form' => $form]);
         if ($prg === false) {
-            return ['form' => $form];
+            return $view;
         }
 
         $album = new Album();
@@ -59,6 +59,8 @@ class AlbumController extends AbstractActionController
             // Redirect to list of albums
             return $this->redirect()->toRoute('album');
         }
+
+        return $view;
     }
 
     public function editAction()

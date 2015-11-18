@@ -26,11 +26,11 @@ return array(
         ),
     ),
 
-//    'controller_plugins' => array(
-//        'invokables' => array(
-//            'appHeader' => 'Album\Controller\Plugin\AddAppHeader',
-//        )
-//    ),
+    'controller_plugins' => array(
+        'invokables' => array(
+            'appHeader' => 'Album\Controller\Plugin\AddAppHeader',
+        )
+    ),
 
     'service_manager' => array(
         'invokables' => array(
@@ -47,11 +47,11 @@ return array(
         ),
     ),
 
-//    'view_helpers' => array(
-//        'invokables' => array(
-//            'randomquote' => 'Album\View\Helper\RandomQuote'
-//        )
-//    ),
+    'view_helpers' => array(
+        'invokables' => array(
+            'randomquote' => 'Album\View\Helper\RandomQuote'
+        )
+    ),
 
     'view_manager' => array(
         'template_path_stack' => array(
